@@ -21,6 +21,8 @@ what3words:           # optional: what3words (https://what3words.com) address of
 layout: workshop
 ---
 
+{% assign carpentry = 'swc' %}
+
 {% assign isOfficial = site.official_curricula | has: site.carpentry %}
 
 {% if page.venue == "FIXME" or
@@ -513,7 +515,7 @@ of code below the Schedule `<h2>` header below with
   <div class="card-body">
     {% assign schedule_file = site.carpentry | append: '/schedule.html' %}
     {% if isOfficial %}
-    {% include schedule.html %}
+    {% include custom-schedule.html %}
     {% elsif site.carpentry == "incubator" %}
     This workshop is teaching a lesson in <a href="https://carpentries-incubator.org/">The Carpentries Incubator</a>.
     Please check <a href="{{site.incubator_lesson_site}}">the lesson homepage</a> for a list of lesson sections and estimated timings.
