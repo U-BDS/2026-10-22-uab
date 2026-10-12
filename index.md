@@ -513,23 +513,44 @@ of code below the Schedule `<h2>` header below with
 <div class="card mb-2">
   <h5 class="card-header">Schedule</h5>
   <div class="card-body">
-    {% assign schedule_file = site.carpentry | append: '/schedule.html' %}
-    {% if isOfficial %}
-    {% include custom-schedule.html %}
-    {% elsif site.carpentry == "incubator" %}
-    This workshop is teaching a lesson in <a href="https://carpentries-incubator.org/">The Carpentries Incubator</a>.
-    Please check <a href="{{site.incubator_lesson_site}}">the lesson homepage</a> for a list of lesson sections and estimated timings.
-    {% endif %}
-
-    {% comment %}
-    Edit/replace the text above if you want to include a schedule table.
-    See the contents of the _includes/custom-schedule.html file for an example of how one of these schedule tables is constructed.
-    {% endcomment %}
-
-    {% if site.pilot %}
-    The lesson taught in this workshop is being piloted and a precise schedule is yet to be established.
-    The workshop will include regular breaks. Please <a href="mailto:{{page.email}}">contact the workshop organisers</a> if you would like more information about the planned schedule.
-    {% endif %}
+    <div class="row">
+    <div class="col-md-6">
+        <h3>Day 1</h3>
+        <table class="table table-striped">
+        <tr> <td>08:00</td> <td>Sign-In,  <a href="{{ site.pre_survey }}{{ site.github.project_title }}" target="_blank" rel="noopener noreferrer">Pre-workshop survey</a>, and Setup & Troubleshooting </td> </tr>
+        <tr> <td>08:50</td>  <td>Introductions & Welcome Session</td> </tr>
+        <tr> <td>09:00</td>  <td>The Unix Shell</td> </tr>
+        <tr> <td>11:00</td>  <td>Morning Break</td> </tr>
+        <tr> <td>11:15</td>  <td>Version Control with Git </td></tr>
+        <tr> <td>12:00</td>  <td>Lunch Break</td> </tr>
+        <tr> <td>13:00</td>  <td>Version Control with Git (continued)</td> </tr>
+        <tr> <td>14:00</td>  <td>Afternoon Break</td> </tr>
+        <tr> <td>14:15</td>  <td>Introduction, Running and Quitting, Variable Assignment</td> </tr>
+        <tr> <td>15:15</td>  <td>Data Types and Type Conversion; Built-in Functions and Help</td> </tr>
+        <tr> <td>16:00</td>  <td>Libraries</td> </tr>
+        <tr> <td>17:00</td>  <td>END</td> </tr>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <h3>Day 2</h3>
+        <table class="table table-striped">
+        <tr> <td>08:30</td>  <td>Check In</td> </tr>
+        <tr> <td>09:00</td>  <td>Reading Tabular Data into DataFrames</td> </tr>
+        <tr> <td>09:40</td>  <td>Pandas Dataframes</td> </tr>
+        <tr> <td>10:00</td>  <td>Morning Break</td> </tr>
+        <tr> <td>11:05</td>  <td>Plotting</td> </tr>
+        <tr> <td>12:00</td>  <td>Lunch Break</td> </tr>
+        <tr> <td>13:00</td>  <td>Lists; For Loops</td> </tr>
+        <tr> <td>13:45</td>  <td>Conditionals</td> </tr>
+        <tr> <td>14:10</td>  <td>Looping Over Data Sets</td> </tr>
+        <tr> <td>14:30</td>  <td>Break</td> </tr>
+        <tr> <td>14:45</td>  <td>Writing Functions; Variable Scope</td> </tr>
+        <tr> <td>15:30</td>  <td>Programming Style</td> </tr>
+        <tr> <td>16:30</td>  <td><a href="{{ site.post_survey }}{{ site.github.project_title }}" target="_blank" rel="noopener noreferrer">Post-workshop Survey</a></td> </tr>
+        <tr> <td>17:00</td>  <td>END</td> </tr>
+        </table>
+    </div>
+    </div>
   </div>
 </div>
 
@@ -586,9 +607,16 @@ If you do not use Zoom for your online workshop, edit the file `_includes/instal
 These are the installation instructions for the tools used during the workshop.
 {% endcomment %}
 
-{% assign setup_file = site.carpentry | append: '/setup.html' %}
-{% if isOfficial %}
-  {% include {{ setup_file }} %}
-{% elsif site.carpentry == "incubator" %}
-  Please check the "Setup" page of <a href="{{site.incubator_lesson_site}}">the lesson homepage</a> for instructions to follow to obtain the software and data you will need to follow the lesson.
-{% endif %}
+{% include install_instructions/shell.html %}
+{% include install_instructions/sshkeys.html %}
+
+<div class="info alert alert-info">
+  <h5>Note for Windows Users</h5>
+  <ul>
+    <li>If you have chosen <strong>Git for Windows ("Git Bash")</strong>, please follow the <strong>Windows</strong> instructions.</li>
+    <li>If you have chosen <strong>Windows Subsystem for Linux ("WSL2")</strong>, please open your Ubuntu bash terminal and follow the <strong>Linux</strong> instructions for each of the software packages below.</li>
+  </ul>
+</div>
+{% include install_instructions/git.html %}
+
+{% include install_instructions/python.html %}
